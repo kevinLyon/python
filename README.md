@@ -1,2 +1,2 @@
 # python
- python for pentest
+ Python for pentest
