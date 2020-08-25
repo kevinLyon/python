@@ -1,22 +1,37 @@
 import socket
 
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#server created
+serv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ip = "0.0.0.0"
-port = 25
+port = 555
 
-try:
-    server.bind((ip, port))
-    server.listen(5)
+def listen():
+    #listening
+    serv.bind((ip,port))
+    serv.listen(5)
     print(f"Listening in: {ip}: {str(port)}")
 
-    (client_socket, address) = server.accept()
+def recv():
 
+    #connection accepted!
+    (client_socket, address) = serv.accept()
     print(f"Received from: {address[0]}")
-
+    #encoded data
     data = client_socket.recv(1024)
     print(data.decode('utf-8'))
-    server.close()
+    serv.close()
 
-except Exception as erro:
-    print(f"Error: {str(erro)}")
-    server.close()
+
+def main():
+    
+    listen()
+
+    try:
+        recv()
+
+    except Exception as erro:
+        print(f"Error: {str(erro)}")
+        serv.close()
+
+#RUN!
+main()
