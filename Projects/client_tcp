@@ -5,12 +5,11 @@ client.settimeout(1)
 
 try:
     client.connect(("127.0.0.1", 555))
-    data =input("Mensagem: ").encode('utf-8')
+    data = ("\n--Connection established").encode()
     client.send(data)
 
-    pacotes_recebidos = client.recv(2024)
+    pacotes_recebidos = client.recv(1024)
 
-    #print(pacotes_recebidos.decode('utf-8'))
 except Exception as erro:
-    print("Conexao falhou")
+    print("Connection failed")
     print(erro)
