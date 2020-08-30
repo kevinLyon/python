@@ -3,7 +3,7 @@ import socket
 #server created
 serv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ip = "0.0.0.0"
-port = 555
+port = 666
 
 def listen():
     #listening
@@ -15,12 +15,10 @@ def recv():
 
     #connection accepted!
     (client_socket, address) = serv.accept()
-    print(f"Received from: {address[0]}")
-    #encoded data
-    data = client_socket.recv(1024)
-    print(data.decode('utf-8'))
-    serv.close()
-
+    print(f"\n{address}:connected!\n")
+    print(f"\nReceived from: {address[0]}: {client_socket.recv(1024).decode()}\n")
+    #Sending confirmation
+    client_socket.send("Received connection".encode())
 
 def main():
     
@@ -28,7 +26,7 @@ def main():
 
     try:
         recv()
-
+        #send()
     except Exception as erro:
         print(f"Error: {str(erro)}")
         serv.close()
