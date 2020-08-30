@@ -7,9 +7,9 @@ try:
     client.connect(("127.0.0.1", 555))
     data = ("\n--Connection established").encode()
     client.send(data)
-
     pacotes_recebidos = client.recv(1024)
 
+    client.close()
 except Exception as erro:
     print("Connection failed")
     print(erro)
