@@ -19,6 +19,7 @@ def recv():
     print(f"\nReceived from: {address[0]}: {client_socket.recv(1024).decode()}\n")
     #Sending confirmation
     client_socket.send("Received connection".encode())
+    serv.close()
 
 def main():
     
@@ -26,7 +27,6 @@ def main():
 
     try:
         recv()
-        #send()
     except Exception as erro:
         print(f"Error: {str(erro)}")
         serv.close()
