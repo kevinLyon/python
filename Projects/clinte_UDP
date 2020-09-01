@@ -1,0 +1,11 @@
+import socket
+
+
+ip = '127.0.0.1'
+port = 25
+
+client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+data = 'hello :)'.encode()
+
+client.sendto(data, (ip, port))
