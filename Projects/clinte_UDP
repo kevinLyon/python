@@ -1,11 +1,17 @@
 import socket
 
-
-ip = '127.0.0.1'
-port = 25
+som = 0
 
 client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-data = 'hello :)'.encode()
+while True:
+    if som < 1:
+        data = 'hello :)'.encode()
+        som += 1
+        client.sendto(data, ("127.0.0.1", 666))
 
-client.sendto(data, (ip, port))
+    rec = client.recv(1024)
+    print (f"\nAnswer: {rec.decode()}\n")
+    
+    break
+client.close()
