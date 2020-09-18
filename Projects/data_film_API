@@ -3,29 +3,40 @@ import requests
 import json
 
 argument = sys.argv
-argument == False
-#
-def help():
-    print("""  modo de usar:
-                
-            -f  pesquisar por filmes:
-            -h para informações""")
+#fal = False
 
-def req():
-    #req = requests.get('http://www.omdbapi.com/?i=' + argument[2] + '&apikey=cfa7e3e5')
+#MyApi_key == cfa7e3e5
+
+def help():
+    print(""" \n Man:
+
+                    example:python .\data_film_API -f <name film>
+                            
+                            -f  pesquisar por filmes:\n""")
+
+def get():
     req = requests.get('http://www.omdbapi.com/?apikey=cfa7e3e5&t='+ argument[2])
     print(req.text)
 
 
 
-
 def man():
-    if argument[1] == False:
+
+    if len(argument) >= 2:
+        if argument[1] != '-f':
+            help()
+            exit()
+        elif argument[1] == '-f':
+            if len(argument) == 3:
+                get()
+                exit()
+            else:
+                print("\nFilme não encontrado.")
+                help()
+                exit()         
+    else:
         help()
+        exit()
 
-    if argument[1] == '-f':
-        argument ==  True
-        req()
-
+#run!!
 man()
-
