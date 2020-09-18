@@ -1,0 +1,31 @@
+import sys 
+import requests
+import json
+
+argument = sys.argv
+argument == False
+#
+def help():
+    print("""  modo de usar:
+                
+            -f  pesquisar por filmes:
+            -h para informações""")
+
+def req():
+    #req = requests.get('http://www.omdbapi.com/?i=' + argument[2] + '&apikey=cfa7e3e5')
+    req = requests.get('http://www.omdbapi.com/?apikey=cfa7e3e5&t='+ argument[2])
+    print(req.text)
+
+
+
+
+def man():
+    if argument[1] == False:
+        help()
+
+    if argument[1] == '-f':
+        argument ==  True
+        req()
+
+man()
+
