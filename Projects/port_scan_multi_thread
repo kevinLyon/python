@@ -1,3 +1,8 @@
+#####################################
+# Developed for studies             #
+# Developed by: Lyon kevin          #
+#####################################
+
 from threading import Thread
 from time import sleep
 import socket
@@ -5,8 +10,7 @@ import sys
 
 argment = sys.argv
 ports_list = [1]
-#target = '172.18.8.3' #port 80
-target = '172.18.7.3' #port 9999, 22
+target = 'ip alvo'
 
 #creat port--
 while len(ports_list) < 65535:
