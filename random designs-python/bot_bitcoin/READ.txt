@@ -1,0 +1,4 @@
+Python 3.6.8
+
+six==1.15.0
+websocket-client==0.57.0
