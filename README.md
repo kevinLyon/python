@@ -1,2 +1,2 @@
 # Python!
- Python for pentest.
+ Python for fun.
