@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
+    <title>Django-Anúncios</title>
+</head>
+<body>
+    <!--header-->
+    <div class="ui grid">
+        <div class="sixteen wide column">
+            <div class="ui inverted attached segment">
+                <div class="ui inverted secondary menu">
+                    <a href="{% url 'home' %}" class="item">
+                        HOME-Teste-Django
+                    </a>
+                    <div class="right menu">
+                        <div class="ui category search">
+                            <div class="ui icon input">
+                                <input class="prompt" type="text" placeholder="Search animals...">
+                                <i class="search icon"></i>
+                            </div>
+                            <div class="results"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="ui hidden divider"></div>
+
+    <!--menu and card-->
+    <div class="ui container">
+        <div class="ui stackable grid">
+            <div class="four wide column">
+                <div class="ui inverted vertical fluid menu">
+                    {% for categoria in categorias %}
+                    <a href="{% url 'categoria' categoria.id %}" class="item">
+                      {{ categoria }}
+                    </a>
+                    {% endfor %}
+                  </div>
+            </div>
+            <div class="twelve wide column">
+                {% if categorias %}
+                <h1 class="ui header">{{ categoria }}</h1>
+                {% endif %}
+                
+                {% block cards %}
+                RENDER CARDS!!
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <!--End-->  
+</body>
+</html>

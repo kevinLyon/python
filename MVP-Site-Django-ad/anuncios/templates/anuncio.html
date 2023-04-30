@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block cards %}
+
+<h1 class="ui header">{{ anuncio.titulo }}</h1>
+<p>{{ anuncio.criado_em }}</p>
+
+{% if anuncio.modificado_em > anuncio.criado_em %}
+  <p>{{ anuncio.modificado_em }}</p>
+{% endif %}
+
+<div class="ui grid">
+  <div class="sixteen wide column">
+    <div class="ui image">
+      <img src="{% static 'anuncios/img/img.png' %}">
+    </div>
+  </div>
+
+  <div class="sixteen wide column">
+    <h2 class="ui header">Preço: R$ {{ anuncio.preco }}</h2>
+    <h2 class="ui header">Descrição</h2>
+    {% if anuncio.descricao %}
+      <p>{{ anuncio.descricao }}</p>
+    {% else %}
+      <p>Este anúncio não contem descrição</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
